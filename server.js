@@ -103,7 +103,14 @@ const swaggerOptions = {
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://match-patrol-frontend.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:3000'
+  ],
+  credentials: true
+}));
 app.use(express.json({ limit: '10mb' }));
 
 // Swagger UI

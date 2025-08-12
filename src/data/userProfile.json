@@ -1,0 +1,51 @@
+{
+  "personalInfo": {
+    "name": "Alex Doe",
+    "email": "alex.doe@example.com",
+    "phone": "123-456-7890",
+    "location": "San Francisco, CA"
+  },
+  "skills": ["Vue.js", "Tailwind CSS", "JavaScript", "HTML", "CSS"],
+  "experience": [
+    {
+      "title": "Frontend Developer",
+      "company": "Tech Solutions",
+      "period": "2020 - Present",
+      "description": "Developed and maintained responsive web applications using Vue.js and Tailwind CSS."
+    },
+    {
+      "title": "Web Developer Intern",
+      "company": "Web Innovators",
+      "period": "2019 - 2020",
+      "description": "Assisted in the development of various client websites."
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "State University",
+      "period": "2015 - 2019"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Personal Portfolio",
+      "description": "A personal portfolio website to showcase my projects.",
+      "url": "https://portfolio.example.com"
+    },
+    {
+      "name": "E-commerce Site",
+      "description": "A full-featured e-commerce website built with Vue.js.",
+      "url": "https://ecom.example.com"
+    }
+  ],
+  "jobPreferences": {
+    "preferredIndustry": "Technology & IT",
+    "minSalary": 80000,
+    "maxSalary": 120000,
+    "companyCareerPageUrls": [
+      "https://careers.google.com/",
+      "https://www.metacareers.com/"
+    ]
+  }
+} 

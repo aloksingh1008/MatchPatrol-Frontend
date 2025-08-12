@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "title": "Frontend Developer",
+    "company": "VueMasters",
+    "location": "San Francisco, CA",
+    "description": "We are looking for a skilled Frontend Developer to join our team. You will be responsible for building the ‘client-side’ of our web applications.",
+    "qualifications": [
+      "Proven work experience as a Frontend Developer",
+      "Experience with Vue.js",
+      "Familiarity with Tailwind CSS",
+      "Excellent communication and teamwork skills"
+    ],
+    "matchPercentage": 95,
+    "aiInsights": {
+      "strengths": "Excellent match on core skills (Vue.js, Tailwind CSS).",
+      "improvementAreas": "Consider adding more details on teamwork from your 'Tech Solutions' role.",
+      "projectToHighlight": "E-commerce Site"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Full Stack Engineer",
+    "company": "NodeNinjas",
+    "location": "New York, NY",
+    "description": "Seeking a Full Stack Engineer to design, develop and maintain our web applications. The ideal candidate is proficient in both frontend and backend development.",
+    "qualifications": [
+      "Experience with Node.js and Express",
+      "Proficient in a frontend framework like Vue, React, or Angular",
+      "Database management skills (SQL or NoSQL)",
+      "Strong problem-solving skills"
+    ],
+    "matchPercentage": 75,
+    "aiInsights": {
+      "strengths": "Strong frontend experience is a big plus.",
+      "improvementAreas": "Highlight any backend or database experience more prominently.",
+      "projectToHighlight": null
+    }
+  },
+  {
+    "id": 4,
+    "title": "DevOps Engineer",
+    "company": "DeployGurus",
+    "location": "Remote",
+    "description": "Join our team as a DevOps Engineer to manage our infrastructure and streamline our deployment processes.",
+    "qualifications": [
+      "Experience with CI/CD pipelines",
+      "Knowledge of cloud platforms (AWS, Azure, or GCP)",
+      "Proficiency in scripting languages",
+      "Experience with containerization (Docker, Kubernetes)"
+    ],
+    "matchPercentage": 40,
+    "aiInsights": {
+      "strengths": "Problem-solving skills are transferable.",
+      "improvementAreas": "This role requires specific DevOps tools experience which is not listed in your profile.",
+      "projectToHighlight": null
+    }
+  },
+  {
+    "id": 5,
+    "title": "Senior Frontend Engineer",
+    "company": "Creative Solutions",
+    "location": "Remote",
+    "description": "Lead the development of our next-generation user interfaces.",
+    "qualifications": [
+        "5+ years of experience with modern JavaScript frameworks",
+        "Deep knowledge of Vue.js and its ecosystem",
+        "Experience leading a team of developers",
+        "Strong portfolio of complex web applications"
+    ],
+    "matchPercentage": 88,
+    "isRecommended": true,
+    "aiInsights": {
+        "strengths": "Your project experience with Vue.js is a perfect fit.",
+        "improvementAreas": "Highlight any leadership or mentoring experience you have.",
+        "projectToHighlight": "E-commerce Site"
+    }
+  }
+] 

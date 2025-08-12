@@ -106,6 +106,8 @@ const swaggerSpec = swaggerJsdoc(swaggerOptions);
 app.use(cors({
   origin: [
     'https://match-patrol-frontend.vercel.app',
+    'https://match-patrol-frontend-git-main-aloksingh1008.vercel.app',
+    'https://match-patrol-frontend-aloksingh1008.vercel.app',
     'http://localhost:5173',
     'http://localhost:3000'
   ],

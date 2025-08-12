@@ -17,7 +17,7 @@ import axios from 'axios';
 
 // Environment variables for API endpoints
 const EXTERNAL_API_BASE = import.meta.env.VITE_EXTERNAL_API_BASE || 'http://ai1.strategicerpcloud.com:11111';
-const BACKEND_API_BASE = import.meta.env.VITE_BACKEND_API_BASE || 'http://localhost:3001';
+const BACKEND_API_BASE = import.meta.env.VITE_BACKEND_API_BASE || 'https://match-patrol-frontend.vercel.app';
 
 // Log environment configuration (only in development)
 if (import.meta.env.DEV) {

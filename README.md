@@ -124,7 +124,7 @@ job-matching-app/
    In Vercel Dashboard → Settings → Environment Variables:
    ```bash
    VITE_EXTERNAL_API_BASE=http://ai1.strategicerpcloud.com:11111
-   VITE_BACKEND_API_BASE=https://your-vercel-app.vercel.app
+   VITE_BACKEND_API_BASE=https://match-patrol-frontend.vercel.app
    VITE_FIREBASE_API_KEY=AIzaSyA5lNSQ7CfJ9KcBl6YMS8ZgjEuCxPEZ020
    VITE_FIREBASE_AUTH_DOMAIN=bookmarker-ebe11.firebaseapp.com
    VITE_FIREBASE_DATABASE_URL=https://bookmarker-ebe11-default-rtdb.firebaseio.com

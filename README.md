@@ -124,14 +124,14 @@ job-matching-app/
    In Vercel Dashboard → Settings → Environment Variables:
    ```bash
    VITE_EXTERNAL_API_BASE=http://ai1.strategicerpcloud.com:11111
-   VITE_BACKEND_API_BASE=https://your-backend-domain.railway.app
-   VITE_FIREBASE_API_KEY=your_firebase_api_key
-   VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-   VITE_FIREBASE_DATABASE_URL=your_database_url
-   VITE_FIREBASE_PROJECT_ID=your_project_id
-   VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-   VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-   VITE_FIREBASE_APP_ID=your_app_id
+   VITE_BACKEND_API_BASE=https://your-vercel-app.vercel.app
+   VITE_FIREBASE_API_KEY=AIzaSyA5lNSQ7CfJ9KcBl6YMS8ZgjEuCxPEZ020
+   VITE_FIREBASE_AUTH_DOMAIN=bookmarker-ebe11.firebaseapp.com
+   VITE_FIREBASE_DATABASE_URL=https://bookmarker-ebe11-default-rtdb.firebaseio.com
+   VITE_FIREBASE_PROJECT_ID=bookmarker-ebe11
+   VITE_FIREBASE_STORAGE_BUCKET=bookmarker-ebe11.firebasestorage.app
+   VITE_FIREBASE_MESSAGING_SENDER_ID=489154616765
+   VITE_FIREBASE_APP_ID=1:489154616765:web:cce6d4d4ba179f7469c6d4
    VITE_APP_NAME=MatchPatrol
    VITE_APP_VERSION=1.0.0
    ```

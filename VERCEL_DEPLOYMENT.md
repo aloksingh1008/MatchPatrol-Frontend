@@ -28,9 +28,8 @@ In Vercel Dashboard → Settings → Environment Variables:
 ```bash
 # API Endpoints
 VITE_EXTERNAL_API_BASE=http://ai1.strategicerpcloud.com:11111
-VITE_BACKEND_API_BASE=https://your-backend-domain.railway.app
+VITE_BACKEND_API_BASE=http://localhost:3001
 
-# Firebase Configuration (Current Project)
 VITE_FIREBASE_API_KEY=AIzaSyA5lNSQ7CfJ9KcBl6YMS8ZgjEuCxPEZ020
 VITE_FIREBASE_AUTH_DOMAIN=bookmarker-ebe11.firebaseapp.com
 VITE_FIREBASE_DATABASE_URL=https://bookmarker-ebe11-default-rtdb.firebaseio.com
@@ -54,69 +53,92 @@ VITE_APP_VERSION=1.0.0
 2. Wait for the build to complete
 3. Your app will be available at `https://your-app-name.vercel.app`
 
-## 🔧 **Backend Deployment (Railway)**
+## 🔧 **Monorepo Deployment Strategy**
 
-### **Step 1: Prepare Backend**
-```bash
-# Create a separate directory for backend
-mkdir matchpatrol-backend
-cd matchpatrol-backend
+Since you're using a monorepo approach with both frontend and backend in the same project, you have two deployment options:
 
-# Copy server files
-cp ../job-matching-app/server.js .
-cp ../job-matching-app/package.json .
+### **Option 1: Deploy to Vercel (Frontend Only) + Separate Backend**
+
+If you want to deploy the backend separately, follow the Railway deployment steps below.
+
+### **Option 2: Deploy Full Stack to Vercel (Recommended)**
+
+Vercel can handle full-stack deployments. Update your `vite.config.js` to include the server:
+
+```javascript
+// vite.config.js
+export default defineConfig({
+  plugins: [vue()],
+  // ... other config
+  server: {
+    port: 5173,
+    host: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  }
+})
 ```
 
-### **Step 2: Create Backend package.json**
+And add a `vercel.json` file in your project root:
+
 ```json
 {
-  "name": "matchpatrol-backend",
-  "version": "1.0.0",
-  "main": "server.js",
-  "type": "module",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
-  },
-  "dependencies": {
-    "express": "^5.1.0",
-    "cors": "^2.8.5",
-    "axios": "^1.7.2",
-    "dotenv": "^17.2.0"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  }
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/$1"
+    }
+  ]
 }
 ```
 
-### **Step 3: Deploy to Railway**
+### **Environment Variables for Full Stack Deployment**
+
 ```bash
-# Install Railway CLI
-npm i -g @railway/cli
+# API Endpoints
+VITE_EXTERNAL_API_BASE=http://ai1.strategicerpcloud.com:11111
+VITE_BACKEND_API_BASE=https://your-vercel-app.vercel.app
 
-# Login to Railway
-railway login
+# Firebase Configuration
+VITE_FIREBASE_API_KEY=AIzaSyA5lNSQ7CfJ9KcBl6YMS8ZgjEuCxPEZ020
+VITE_FIREBASE_AUTH_DOMAIN=bookmarker-ebe11.firebaseapp.com
+VITE_FIREBASE_DATABASE_URL=https://bookmarker-ebe11-default-rtdb.firebaseio.com
+VITE_FIREBASE_PROJECT_ID=bookmarker-ebe11
+VITE_FIREBASE_STORAGE_BUCKET=bookmarker-ebe11.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=489154616765
+VITE_FIREBASE_APP_ID=1:489154616765:web:cce6d4d4ba179f7469c6d4
 
-# Initialize project
-railway init
-
-# Set environment variables
-railway variables set EXTERNAL_API_BASE=http://ai1.strategicerpcloud.com:11111
-railway variables set PORT=3001
-
-# Deploy
-railway up
+# App Configuration
+VITE_APP_NAME=MatchPatrol
+VITE_APP_VERSION=1.0.0
 ```
 
-### **Step 4: Get Backend URL**
-After deployment, Railway will provide a URL like:
-`https://your-app-name.railway.app`
+## 🔧 **Alternative: Separate Backend Deployment (Railway)**
 
-Update your Vercel environment variable:
-```bash
-VITE_BACKEND_API_BASE=https://your-app-name.railway.app
-```
+If you prefer to deploy the backend separately:
 
 ## 🔒 **Security Considerations**
 

@@ -114,11 +114,11 @@ export const useAuthStore = defineStore('auth', () => {
                     timeout: 10000
                 });
 
-                // Fire update-urls API with companyCareerPageUrls
+                // Fire update-urls API with companyCareerPageUrls through backend
                 const companyUrls = profileToSend.jobPreferences?.companyCareerPageUrls || [];
                 if (Array.isArray(companyUrls) && companyUrls.length > 0) {
                   try {
-                    await axios.post(`${EXTERNAL_API_BASE}/update-urls/`, { link: companyUrls }, {
+                    await axios.post(`${BACKEND_API_BASE}/api/update-urls/`, { link: companyUrls }, {
                       headers: { 'Content-Type': 'application/json' },
                       timeout: 10000
                     });

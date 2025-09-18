@@ -237,6 +237,83 @@ app.post('/api/update-user', async (req, res) => {
 
 /**
  * @swagger
+ * /api/update-urls/:
+ *   post:
+ *     summary: Update company career page URLs
+ *     description: Sends company career page URLs to external API for processing
+ *     tags:
+ *       - Users
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - link
+ *             properties:
+ *               link:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                 description: Array of company career page URLs
+ *                 example: ["https://www.google.com/about/careers/applications/", "https://careers.amazon.com/"]
+ *     responses:
+ *       200:
+ *         description: URLs updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: success
+ *       400:
+ *         description: link array is required
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       500:
+ *         description: Failed to update URLs
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ */
+// Update URLs endpoint
+app.post('/api/update-urls/', async (req, res) => {
+  try {
+    const { link } = req.body;
+
+    console.log('🔗 Update URLs request:', { 
+      linkCount: Array.isArray(link) ? link.length : 0,
+      links: link 
+    });
+
+    if (!Array.isArray(link)) {
+      return res.status(400).json({ error: 'link must be an array' });
+    }
+
+    // Send to external API
+    const response = await axios.post(`${EXTERNAL_API_BASE}/update-urls/`, { link }, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      timeout: 10000
+    });
+
+    console.log('✅ External API response for update-urls:', response.data);
+    res.json(response.data);
+  } catch (error) {
+    console.error('❌ Error updating URLs:', error.message);
+    res.status(500).json({ error: 'Failed to update URLs' });
+  }
+});
+
+/**
+ * @swagger
  * /api/get-user/{displayId}:
  *   get:
  *     summary: Get user profile details
@@ -921,6 +998,7 @@ app.listen(PORT, () => {
   console.log(`GET    /api/health                        - Health check`);
   console.log(`GET    /api/test-external                 - Test external API connectivity`);
   console.log(`POST   /api/update-user                   - Update user profile`);
+  console.log(`POST   /api/update-urls/                  - Update company career page URLs`);
   console.log(`GET    /api/get-user/:displayId           - Get user details`);
   console.log(`POST   /api/get-match-results/            - Get matched jobs`);
   console.log(`POST   /api/get-recommended-match-results/ - Get recommended jobs`);
@@ -932,6 +1010,8 @@ app.listen(PORT, () => {
   console.log(`Base URL: ${EXTERNAL_API_BASE}`);
   console.log(`Health:   ${EXTERNAL_API_BASE}/health`);
   console.log(`User:     ${EXTERNAL_API_BASE}/get-user-detail/`);
+  console.log(`Update User: ${EXTERNAL_API_BASE}/update-user/`);
+  console.log(`Update URLs: ${EXTERNAL_API_BASE}/update-urls/`);
   console.log(`Matches:  ${EXTERNAL_API_BASE}/get-match-results/`);
   console.log(`Recommended: ${EXTERNAL_API_BASE}/get-recommended-match-results/`);
   console.log(`Statistics: ${EXTERNAL_API_BASE}/get-match-statistics/`);

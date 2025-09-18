@@ -51,7 +51,7 @@ MatchPatrol is an intelligent job matching platform that uses AI to connect prof
    Edit `.env.local` with your configuration:
    ```bash
    # API Endpoints
-   VITE_EXTERNAL_API_BASE=http://ai1.strategicerpcloud.com:11111
+   VITE_EXTERNAL_API_BASE=
    VITE_BACKEND_API_BASE=http://localhost:3001
 
    # Firebase Configuration
@@ -123,7 +123,7 @@ job-matching-app/
 2. **Set Environment Variables**
    In Vercel Dashboard → Settings → Environment Variables:
    ```bash
-   VITE_EXTERNAL_API_BASE=http://ai1.strategicerpcloud.com:11111
+   VITE_EXTERNAL_API_BASE=
    VITE_BACKEND_API_BASE=https://match-patrol-frontend.vercel.app
    VITE_FIREBASE_API_KEY=AIzaSyA5lNSQ7CfJ9KcBl6YMS8ZgjEuCxPEZ020
    VITE_FIREBASE_AUTH_DOMAIN=bookmarker-ebe11.firebaseapp.com
